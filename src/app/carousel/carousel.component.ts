@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-carousel',
@@ -6,16 +6,44 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./carousel.component.scss']
 })
 export class CarouselComponent implements OnInit {
-  slides_lg = [
-    {image: 'https://picsum.photos/1024/200/?random'}
+
+  data = [
+    {
+      id: 'banner1',
+      imgBig: 'https://picsum.photos/1024/200/?random',
+      imgSmall: 'https://picsum.photos/424/306/?random'
+    },
+    {
+      id: 'banner2',
+      imgBig: 'https://picsum.photos/1024/200/?random',
+      imgSmall: 'https://picsum.photos/424/306/?random'
+    },
+    {
+      id: 'banner3',
+      imgBig: 'https://picsum.photos/1024/200/?random',
+      imgSmall: 'https://picsum.photos/424/306/?random'
+    },
+    {
+      id: 'banner4',
+      imgBig: 'https://picsum.photos/1024/200/?random',
+      imgSmall: 'https://picsum.photos/424/306/?random'
+    },
+    {
+      id: 'banner5',
+      imgBig: 'https://picsum.photos/1024/200/?random',
+      imgSmall: 'https://picsum.photos/424/306/?random'
+    },
+    {
+      id: 'banner6',
+      imgBig: 'https://picsum.photos/1024/200/?random',
+      imgSmall: 'https://picsum.photos/424/306/?random'
+    }
   ];
 
-  slides_sm = [
-    {image: 'https://picsum.photos/424/306/?random'}
-  ];
   showIndicator = false;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
