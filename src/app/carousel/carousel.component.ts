@@ -14,8 +14,8 @@ export class CarouselComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.randomImageService.getRandomImages().subscribe((next) => {
-      this.data = next.data;
+    this.randomImageService.getRandomImages().subscribe((data) => {
+      this.data = data;
     });
   }
 

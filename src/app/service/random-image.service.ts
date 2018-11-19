@@ -11,6 +11,6 @@ export class RandomImageService {
   }
 
   getRandomImages(): Observable<any> {
-    return this.http.get('./test-data.json');
+    return this.http.get('https://localhost:5001/api/banners');
   }
 }
