@@ -1,7 +1,11 @@
 <div class="container">
   <h1>Test</h1>
   <div class="first-carousel">
-    <img src="https://picsum.photos/1024/200/?random">
+    <carousel [showIndicators]="showIndicator">
+      <slide *ngFor="let slide of slides_lg; let index=index">
+        <img [src]="slide.image" alt="image slide" style="display: block; width: 100%;">
+      </slide>
+    </carousel>
   </div>
   <div>
     <div class="text">
@@ -22,7 +26,11 @@
       consectetur. Pellentesque vehicula convallis placerat. Nam porttitor tortor sed finibus viverra.
     </div>
     <div class="second-carousel">
-      <img src="https://picsum.photos/424/306/?random">
+      <carousel [showIndicators]="showIndicator">
+        <slide *ngFor="let slide of slides_sm; let index=index">
+          <img [src]="slide.image" alt="image slide" style="display: block; width: 100%;">
+        </slide>
+      </carousel>
     </div>
   </div>
 </div>
