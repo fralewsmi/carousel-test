@@ -1,9 +1,12 @@
 <div class="container">
   <h1>Test</h1>
   <div class="first-carousel">
-    <carousel [showIndicators]="showIndicator">
+    <carousel>
       <slide *ngFor="let slide of data">
         <img [src]="slide.imgBig" alt="{{slide.id}} big" style="display: block; width: 100%;">
+        <div class="carousel-caption">
+          <h3>{{slide.id}}</h3>
+        </div>
       </slide>
     </carousel>
   </div>
@@ -26,9 +29,12 @@
       consectetur. Pellentesque vehicula convallis placerat. Nam porttitor tortor sed finibus viverra.
     </div>
     <div class="second-carousel">
-      <carousel (activeSlideChange)="changeSlide($event)" [showIndicators]="showIndicator">
+      <carousel>
         <slide *ngFor="let slide of data">
           <img [src]="slide.imgSmall" alt="{{slide.id}} small" style="display: block; width: 100%;">
+          <div class="carousel-caption">
+            <h3>{{slide.id}}</h3>
+          </div>
         </slide>
       </carousel>
     </div>
