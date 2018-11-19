@@ -1,13 +1,16 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RandomImageService {
 
-  constructor() { }
+  constructor(private http: HttpClient) {
+  }
 
-  getRandomImage(): string {
-    return "https://picsum.photos/1024/200/?random";
+  getRandomImages(): Observable<any> {
+    return this.http.get('./test-data.json');
   }
 }

@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {RandomImageService} from '../service/random-image.service';
 
 @Component({
   selector: 'app-carousel',
@@ -7,45 +8,15 @@ import {Component, OnInit} from '@angular/core';
 })
 export class CarouselComponent implements OnInit {
 
-  data = [
-    {
-      id: 'banner1',
-      imgBig: 'https://picsum.photos/1024/200/?random',
-      imgSmall: 'https://picsum.photos/424/306/?random'
-    },
-    {
-      id: 'banner2',
-      imgBig: 'https://picsum.photos/1024/200/?random',
-      imgSmall: 'https://picsum.photos/424/306/?random'
-    },
-    {
-      id: 'banner3',
-      imgBig: 'https://picsum.photos/1024/200/?random',
-      imgSmall: 'https://picsum.photos/424/306/?random'
-    },
-    {
-      id: 'banner4',
-      imgBig: 'https://picsum.photos/1024/200/?random',
-      imgSmall: 'https://picsum.photos/424/306/?random'
-    },
-    {
-      id: 'banner5',
-      imgBig: 'https://picsum.photos/1024/200/?random',
-      imgSmall: 'https://picsum.photos/424/306/?random'
-    },
-    {
-      id: 'banner6',
-      imgBig: 'https://picsum.photos/1024/200/?random',
-      imgSmall: 'https://picsum.photos/424/306/?random'
-    }
-  ];
+  data = [];
 
-  showIndicator = false;
-
-  constructor() {
+  constructor(private randomImageService: RandomImageService) {
   }
 
   ngOnInit() {
+    this.randomImageService.getRandomImages().subscribe((next) => {
+      this.data = next.data;
+    });
   }
 
 }
