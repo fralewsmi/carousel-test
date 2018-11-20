@@ -1,14 +1,22 @@
 <div class="container">
-  <h1>{{title}}</h1>
+  <h1 class="text-center">{{title}}</h1>
   <div class="carousel">
-    <img [src]="randomImage1.url" [alt]="randomImage1.id">
-    <h3 class="carousel-overlay">{{randomImage1.id}}</h3>
+    <img class="img-fluid rounded mx-auto d-block" [src]="randomImage1.url" [alt]="randomImage1.id">
+    <div class="carousel-caption d-none d-md-block">
+      <h3 class="carousel-overlay">{{randomImage1.id}}</h3>
+    </div>
   </div>
-  <div class="text">
-    {{text}}
-  </div>
-  <div class="carousel">
-    <img [src]="randomImage2.url" [alt]="randomImage2.id">
-    <h3 class="carousel-overlay">{{randomImage2.id}}</h3>
+  <div class="row">
+    <div class="col text">
+      {{text}}
+    </div>
+    <div class="col">
+      <div class="carousel">
+        <img class="img-fluid rounded" [src]="randomImage2.url" [alt]="randomImage2.id">
+        <div class="carousel-caption d-none d-md-block">
+          <h3 class="carousel-overlay">{{randomImage2.id}}</h3>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

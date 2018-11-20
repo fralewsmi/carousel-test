@@ -1,9 +1,16 @@
+@import '../../assets/scss/variables.scss';
+
+h1 {
+  color: $off-black;
+}
+
 .text {
   max-width: 75%;
   text-align: justify;
   display: inline-block;
   padding: 10px;
   box-sizing: border-box;
+  color: $off-black;
 }
 
 .carousel {
@@ -11,9 +18,7 @@
 }
 
 .carousel-overlay {
-  position: absolute;
-  left: 50%;
-  bottom: 5%;
+  margin-bottom: -10rem;
   color: white;
-  transform: translate(-50%, -50%);
+  text-shadow: 0.2rem 0.2rem 0.2rem $off-black;
 }
