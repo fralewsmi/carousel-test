@@ -24,18 +24,15 @@ export class CarouselComponent implements OnInit, OnDestroy {
       porttitor, lorem eget imperdiet semper, sem erat finibus lectus, non hendrerit mi risus ut tellus. Nulla facilisi.
       Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque pulvinar risus nec lacus tincidunt
       consectetur. Pellentesque vehicula convallis placerat. Nam porttitor tortor sed finibus viverra.`;
-
-  images: Image[] = [];
-  randomImage1: Image = {id: '', url: ''};
   randomImage2: Image = {id: '', url: ''};
-  subscription: Subscription;
+  randomImage1: Image = {id: '', url: ''};
+  private subscription: Subscription;
 
   constructor(private randomImageService: RandomImageService) {
   }
 
   ngOnInit() {
     this.randomImageService.getRandomImages().subscribe((data: Image[]) => {
-      this.images = data;
       this.subscription = timer(0, 5000).subscribe(() => this.setRandomImages(data));
     });
   }
@@ -48,12 +45,13 @@ export class CarouselComponent implements OnInit, OnDestroy {
   * Sets both images for the carousels, ensuring the second does not match the first
    */
   private setRandomImages(images: Image[]) {
-    this.randomImage1 = this.getRandomImage(images);
-    let randomImage = this.getRandomImage(images);
-    while (randomImage.id === this.randomImage1.id) {
-      randomImage = this.getRandomImage(images);
+    let randomImageTemp1 = this.getRandomImage(images);
+    let randomImageTemp2 = this.getRandomImage(images);
+    while (randomImageTemp1.id === randomImageTemp2.id) {
+      randomImageTemp2 = this.getRandomImage(images);
     }
-    this.randomImage2 = randomImage;
+    this.randomImage1 = randomImageTemp1;
+    this.randomImage2 = randomImageTemp2;
   }
 
   /*
