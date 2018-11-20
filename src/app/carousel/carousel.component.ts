@@ -1,13 +1,14 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {RandomImageService} from '../service/random-image.service';
 import {Image} from '../model/image';
+import {Subscription, timer} from 'rxjs';
 
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.scss']
 })
-export class CarouselComponent implements OnInit {
+export class CarouselComponent implements OnInit, OnDestroy {
   title = 'Test';
   text = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. In metus tellus, tempus quis aliquet sed, consectetur in
       arcu. Donec et ligula facilisis, ullamcorper ipsum eleifend, sodales tellus. Fusce eleifend risus at arcu porta,
@@ -25,14 +26,40 @@ export class CarouselComponent implements OnInit {
       consectetur. Pellentesque vehicula convallis placerat. Nam porttitor tortor sed finibus viverra.`;
 
   images: Image[] = [];
+  randomImage1: Image = {id: '', url: ''};
+  randomImage2: Image = {id: '', url: ''};
+  subscription: Subscription;
 
   constructor(private randomImageService: RandomImageService) {
   }
 
   ngOnInit() {
-    this.randomImageService.getRandomImages().subscribe((data) => {
+    this.randomImageService.getRandomImages().subscribe((data: Image[]) => {
       this.images = data;
+      this.subscription = timer(0, 5000).subscribe(() => this.setRandomImages(data));
     });
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+  /*
+  * Sets both images for the carousels, ensuring the second does not match the first
+   */
+  private setRandomImages(images: Image[]) {
+    this.randomImage1 = this.getRandomImage(images);
+    let randomImage = this.getRandomImage(images);
+    while (randomImage.id === this.randomImage1.id) {
+      randomImage = this.getRandomImage(images);
+    }
+    this.randomImage2 = randomImage;
+  }
+
+  /*
+  * Returns a random image from an array for images
+  */
+  private getRandomImage(images: Image[]) {
+    return images[Math.floor(Math.random() * images.length)];
+  }
 }

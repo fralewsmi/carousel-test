@@ -1,28 +1,14 @@
 <div class="container">
   <h1>{{title}}</h1>
-  <div class="first-carousel">
-    <carousel>
-      <slide *ngFor="let image of images">
-        <img [src]="image.url" alt="{{image.id}}">
-        <div class="carousel-caption">
-          <h3>{{image.id}}</h3>
-        </div>
-      </slide>
-    </carousel>
+  <div class="carousel">
+    <img [src]="randomImage1.url" [alt]="randomImage1.id">
+    <h3 class="carousel-overlay">{{randomImage1.id}}</h3>
   </div>
-  <div>
-    <div class="text">
-      {{text}}
-    </div>
-    <div class="second-carousel">
-      <carousel>
-        <slide *ngFor="let image of images">
-          <img [src]="image.url" alt="{{image.id}}">
-          <div class="carousel-caption">
-            <h3>{{image.id}}</h3>
-          </div>
-        </slide>
-      </carousel>
-    </div>
+  <div class="text">
+    {{text}}
+  </div>
+  <div class="carousel">
+    <img [src]="randomImage2.url" [alt]="randomImage2.id">
+    <h3 class="carousel-overlay">{{randomImage2.id}}</h3>
   </div>
 </div>
